@@ -1,0 +1,7 @@
+name: AACAddition
+version: ${project.version}
+main: de.photon.aacaddition.AACAddition
+api-version: 1.13
+depend: [ProtocolLib, AAC]
+authors: [Photon]
+description: This plugin aims to temporarily fix issues in AAC until konsolas becomes active once again.

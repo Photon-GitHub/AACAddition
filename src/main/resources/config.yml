@@ -1,0 +1,8 @@
+# AACAddition by Photon
+# This fixes a false positives which is caused by breaking cocoa with iron or diamond axes.
+FastbreakFix:
+  # Do you want to enable the Fastbreak fix
+  enabled: true
+  # How long after breaking a cocoa block with an affected axe should a player be bypassed from Fastbreak?
+  # Measured in milliseconds.
+  bypassedTime: 1000
