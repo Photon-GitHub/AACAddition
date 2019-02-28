@@ -1,5 +1,6 @@
 package de.photon.aacaddition.modules.fixes;
 
+import de.photon.aacaddition.AACAddition;
 import de.photon.aacaddition.modules.ListenerModule;
 import de.photon.aacaddition.modules.ModuleType;
 import de.photon.aacaddition.user.User;
@@ -16,6 +17,8 @@ import java.util.EnumSet;
 public class FastbreakFix implements ListenerModule
 {
     private static final EnumSet<Material> AFFECTED_MATERIALS = EnumSet.of(Material.IRON_AXE, Material.DIAMOND_AXE);
+
+    private final int bypassedTime = AACAddition.getInstance().getConfig().getInt(this.getConfigString() + ".bypassedTime");
 
     // Lowest priority to process before the break handler of AAC.
     @EventHandler(priority = EventPriority.LOWEST)
@@ -46,7 +49,10 @@ public class FastbreakFix implements ListenerModule
                 return;
             }
 
-            if (user.getFastbreakFixData().recentlyUpdated(0, 1000)) {
+            // Make sure that the player still has the axe in order to prevent fast mining bypasses with pickaxe blocks
+            if (AFFECTED_MATERIALS.contains(event.getPlayer().getInventory().getItemInMainHand().getType()) &&
+                user.getFastbreakFixData().recentlyUpdated(0, bypassedTime))
+            {
                 event.setCancelled(true);
             }
         }
