@@ -16,7 +16,6 @@ import java.util.EnumSet;
 
 public class FastbreakFix implements ListenerModule
 {
-
     private static final EnumSet<Material> AFFECTED_MATERIALS = EnumSet.of(Material.IRON_AXE, Material.DIAMOND_AXE);
 
     private final int bypassedTime = AACAddition.getInstance().getConfig().getInt(this.getConfigString() + ".bypassedTime");

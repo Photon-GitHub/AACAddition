@@ -8,7 +8,8 @@ import lombok.Setter;
 public enum ModuleType
 {
     // Fixes
-    FASTBREAK_FIX("FastbreakFix");
+    FASTBREAK_FIX("FastbreakFix"),
+    FASTUSE_FIX("FastuseFix");
 
     @Getter
     @Setter(AccessLevel.PACKAGE)

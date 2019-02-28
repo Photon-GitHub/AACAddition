@@ -2,6 +2,7 @@ package de.photon.aacaddition;
 
 import de.photon.aacaddition.modules.Module;
 import de.photon.aacaddition.modules.fixes.FastbreakFix;
+import de.photon.aacaddition.modules.fixes.FastuseFix;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
@@ -11,7 +12,8 @@ import java.io.File;
 
 public final class AACAddition extends JavaPlugin
 {
-    private final Module fastbreakFix = new FastbreakFix();
+    private Module fastbreakFix;
+    private Module fastuseFix;
 
     /**
      * This will get the object of the plugin registered on the server.
@@ -50,12 +52,19 @@ public final class AACAddition extends JavaPlugin
     @Override
     public void onEnable()
     {
+        // Enable here to make sure the instance of the plugin can be loaded.
+        fastbreakFix = new FastbreakFix();
+        fastuseFix = new FastuseFix();
+
+        // Actual enabling routine
         Module.enableModule(fastbreakFix);
+        Module.enableModule(fastuseFix);
     }
 
     @Override
     public void onDisable()
     {
         Module.disableModule(fastbreakFix);
+        Module.disableModule(fastuseFix);
     }
 }

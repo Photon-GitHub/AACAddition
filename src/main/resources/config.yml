@@ -6,3 +6,8 @@ FastbreakFix:
   # How long after breaking a cocoa block with an affected axe should a player be bypassed from Fastbreak?
   # Measured in milliseconds.
   bypassedTime: 1000
+
+# This fixes a Fastuse false positive when eating dried kelp.
+FastuseFix:
+  # Do you want to enable the Fastuse fix
+  enabled: true
